@@ -1193,7 +1193,7 @@ textarea { min-height: 120px; resize: vertical; }
   cursor: pointer;
   font-weight: 600;
   font-family: inherit;
-  box-shadow: 0 14px 28px rgba(230, 0, 168, .24);
+  box-shadow: 0 14px 28px rgba(230, 0, 168, .14);
 }
 
 /* front pocket layer */
@@ -1304,7 +1304,7 @@ textarea { min-height: 120px; resize: vertical; }
   }
 
   .invitation-paper h2 {
-    font-size: 32px;
+    font-size: 30px !important;
   }
 
   .invitation-paper p {
