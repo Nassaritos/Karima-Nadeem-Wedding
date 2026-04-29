@@ -1744,13 +1744,14 @@ font-weight:100
 @media (max-width: 600px) {
   .hero.video-hero {
     padding: 120px 18px 70px !important;
+    min-height: 85vh !improtant;
   }
 
   .hero.video-hero .nav {
     width: calc(70% - 32px) !important;
     overflow-x: auto !important;
     justify-content: center !important;
-top:600px !important;
+top:500px !important;
   }
 
   .hero.video-hero h1 {
