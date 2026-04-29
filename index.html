@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="cursor-heart" id="cursorHeart">♡</div>
+
+<section class="intro-envelope" id="intro">
+  <div class="envelope-scene">
+    <div class="real-envelope" id="introEnvelope">
+      <img
+        class="envelope-img"
+        id="envelopeImg"
+        src="2.png"
+        alt="Wedding envelope"
+      >
+
+     <div class="invitation-paper">
+ <span class="paper-texture"></span>
+
+
+
+
+<p class="invite-small">WE'RE GETTING MARRIED!</p>
+
+<h2 class="invite-names">Karima &nbsp; & &nbsp; Nadeem</h2>
+
+<p class="invite-message">
+  We would be honored to have you with us as we celebrate our wedding day.
+</p>
+
+
+
+<p class="invite-details">
+  Saturday, 5 September 2026<br>
+  7:00 PM<br>
+Maqam, Cairo
+</p>
+
+
+<button id="enterBtn" type="button">Celebrate with us</button>
+
+
+
+</div>
+
+<img
+  class="envelope-front"
+  src="3.png"
+  alt=""
+  aria-hidden="true"
+>
+    </div>
+
+    <p class="tap-hint" id="tapHint">Tap the envelope to open</p>
+  </div>
+</section>
+  <button class="music-btn" id="musicBtn" aria-label="Toggle music">♪</button>
+  <audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_2cb6ffccbe.mp3?filename=romantic-piano-111734.mp3" type="audio/mpeg">
+  </audio>
+
+  <main>
+    <section class="hero video-hero" id="home">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="maqam.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-overlay"></div>
+
+  <div class="petals" id="petals"></div>
+  <div class="sparkles"></div>
+
+  <nav class="nav">
+    <a href="#story">Story</a>
+    <a href="#details">Details</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#rsvp">RSVP</a>
+  </nav>
+
+  <div class="hero-content reveal">
+<h1><span>Karima <span class="ampersand">&amp;</span> Nadeem</span></h1>     </div>
+</section>
+<section class="invitation-section whatsapp-invite" id="invitation">
+  <div class="section-title reveal">
+    <p>Tap to open</p>
+    <h2>Your Invitation Card</h2>
+  </div>
+
+  <div class="phone-frame reveal">
+    <div class="phone-top">
+      <span class="dot"></span>
+      <span class="chat-name">Wedding Invitation</span>
+      <span class="online">online</span>
+    </div>
+
+  <div class="chat-area" id="chatArea">
+
+  <div class="chat-bubble received typing" id="typingBubble">
+    <span></span><span></span><span></span>
+  </div>
+
+</div>
+</section>
+
+ <section class="details" id="details">
+      <div class="section-title reveal">
+        <p>Save the date</p>
+        <h2>Wedding Details</h2>
+      </div>
+      <div class="details-grid">
+        <div class="detail-card reveal">
+          <div class="icon">💍</div>
+          <h3>Ceremony</h3>
+          <p>Saturday, 05 September 2026</p>
+          <strong>7:00 PM</strong>
+        </div>
+        <div class="detail-card reveal">
+          <div class="icon">📍</div>
+          <h3>Venue</h3>
+          <p>Royal Garden Hall, Cairo</p>
+          <a href="https://maps.google.com" target="_blank" rel="noreferrer">Open Map</a>
+        </div>
+        <div class="detail-card reveal">
+          <div class="icon">✨</div>
+          <h3>Dress Code</h3>
+          <p>Formal / Soft Pastels</p>
+          <strong>Come elegant</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="countdown-section">
+      <div class="section-title reveal">
+        <p>Counting every heartbeat</p>
+        <h2>Until We Say “I Do”</h2>
+      </div>
+      <div class="countdown reveal" id="countdown">
+        <div><span id="days">00</span><p>Days</p></div>
+        <div><span id="hours">00</span><p>Hours</p></div>
+        <div><span id="minutes">00</span><p>Minutes</p></div>
+        <div><span id="seconds">00</span><p>Seconds</p></div>
+      </div>
+    </section>
+    <section class="story memories-story" id="story">
+  <div class="section-title reveal">
+    <p>Our little journey</p>
+    <h2>Memories Before Forever</h2>
+  </div>
+
+  <div class="memories-timeline">
+
+    <article class="memory-card reveal">
+      <div class="memory-img">
+        <img src="https://images.unsplash.com/photo-1529634597503-139d3726fed5?auto=format&fit=crop&w=900&q=80" alt="First memory">
+      </div>
+      <div class="memory-text">
+        <span>01</span>
+        <h3>The First Hello</h3>
+        <p>
+          It started with a simple moment, but somehow it stayed.
+          A small hello became the beginning of something neither of us expected.
+        </p>
+      </div>
+    </article>
+
+    <article class="memory-card reveal reverse">
+      <div class="memory-img">
+        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=80" alt="Coffee memory">
+      </div>
+      <div class="memory-text">
+        <span>02</span>
+        <h3>The Day We Knew</h3>
+        <p>
+          Between laughter, long talks, and quiet smiles, something felt different.
+          It was not loud, but it was real.
+        </p>
+      </div>
+    </article>
+
+    <article class="memory-card reveal">
+      <div class="memory-img">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80" alt="Proposal memory">
+      </div>
+      <div class="memory-text">
+        <span>03</span>
+        <h3>The Promise</h3>
+        <p>
+          One question, one answer, and a thousand emotions.
+          A promise to keep choosing each other, every day.
+        </p>
+      </div>
+    </article>
+
+    <article class="memory-card reveal reverse">
+      <div class="memory-img">
+        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80" alt="Wedding memory">
+      </div>
+      <div class="memory-text">
+        <span>04</span>
+        <h3>Now, Forever Begins</h3>
+        <p>
+          And now we are here, ready to celebrate this chapter with the people
+          who made our story even more beautiful.
+        </p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+   
+
+  
+    <section class="rsvp" id="rsvp">
+      <div class="rsvp-card reveal">
+        <div class="section-title">
+          <p>Will you celebrate with us?</p>
+          <h2>RSVP</h2>
+        </div>
+        <form id="rsvpForm">
+          <input type="text" placeholder="Your name" required>
+          <select required>
+            <option value="">Will you attend?</option>
+            <option>Yes, happily attending</option>
+            <option>Sorry, can’t attend</option>
+          </select>
+          <input type="number" min="1" max="5" placeholder="Number of guests">
+          <textarea placeholder="Leave a sweet message"></textarea>
+          <button type="submit" class="primary-btn">Send RSVP</button>
+        </form>
+        <p class="success-msg" id="successMsg">Your RSVP has been saved. Can’t wait to celebrate together ♡</p>
+      </div>
+    </section>
+
+    <section class="wishes">
+      <div class="section-title reveal">
+        <p>Little notes of love</p>
+        <h2>Guest Wishes</h2>
+      </div>
+      <div class="wishes-box reveal" id="wishesBox">
+        <p>“Wishing you a lifetime of happiness and endless love.”</p>
+        <p>“May your new chapter be full of laughter, peace, and beautiful memories.”</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <h2>Bride & Groom</h2>
+      <p>See you on our big day ♡</p>
+      <a href="#home">Back to top</a>
+    </footer>
+  </main>
+
+  <div class="lightbox" id="lightbox">
+    <img src="" alt="Preview" id="lightboxImg">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
