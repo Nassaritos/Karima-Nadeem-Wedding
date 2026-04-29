@@ -1318,7 +1318,7 @@ textarea { min-height: 120px; resize: vertical; }
   }
 
   .real-envelope.open .invitation-paper {
-    transform: translateY(-100px) rotateZ(.5deg) scale(1);
+    transform: translateY(-80px) rotateZ(.5deg) scale(1);
   }
 
   .real-envelope::before {
