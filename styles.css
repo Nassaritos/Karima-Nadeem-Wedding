@@ -999,7 +999,6 @@ textarea { min-height: 120px; resize: vertical; }
   position: relative;
   z-index: 1;
   transform: translateY(-70px);
-  filter: drop-shadow(0 35px 60px rgba(190, 0, 130, .22));
   transition: opacity .22s ease, transform .28s ease;
 }
 
@@ -1042,7 +1041,6 @@ textarea { min-height: 120px; resize: vertical; }
   position: relative;
   z-index: 1;
   transform: translateY(-70px);
-  filter: drop-shadow(0 35px 60px rgba(190, 0, 130, .22));
   transition: opacity .22s ease, transform .28s ease;
 }
 
@@ -1744,7 +1742,7 @@ font-weight:100
 @media (max-width: 600px) {
   .hero.video-hero {
     padding: 120px 18px 70px !important;
-    min-height: 85vh !improtant;
+    min-height: 75vh !improtant;
   }
 
   .hero.video-hero .nav {
