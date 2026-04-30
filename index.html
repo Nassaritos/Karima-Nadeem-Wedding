@@ -197,38 +197,46 @@ Maqam, Cairo
 </section>
 
 <script>
-  document.getElementById('rsvpForm').addEventListener('submit', function (event) {
-    event.preventDefault();
+  document.getElementById("rsvpForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent default form submission
 
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const attendance = document.getElementById('attendance').value;
-    const message = document.getElementById('message').value;
+    // Get form values
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var attendance = document.getElementById("attendance").value;
+    var message = document.getElementById("message").value;
 
-    // Replace with your actual Google Apps Script Web App URL
-    const webAppUrl = 'https://script.google.com/macros/s/AKfycby47I5EWIe2E45j99zn9SyCL4VR35PBZpkN_vazWX65yrAzsoeqN-a8TmJAWsz18aHo/exec'; // Update with your Web App URL from Google Apps Script
+ 
 
-    fetch(webAppUrl, {
+    // Prepare data to send to Google Apps Script
+    var formData = {
+      name: name,
+      email: email,
+      attendance: attendance,
+      message: message
+    };
+
+    // Send data to Google Apps Script via POST request
+    fetch('https://script.google.com/macros/s/AKfycby47I5EWIe2E45j99zn9SyCL4VR35PBZpkN_vazWX65yrAzsoeqN-a8TmJAWsz18aHo/exec', {
       method: 'POST',
-      body: new URLSearchParams({
-        'name': name, 
-        'email': email, 
-        'attendance': attendance,
-        'message': message
-      }),
+      contentType: 'application/json',
+      body: JSON.stringify(formData)
     })
-    .then(response => response.text())
+    .then(response => response.json())
     .then(data => {
-      // Show success message after successful submission
-      document.getElementById('successMsg').style.display = 'block';
-      console.log('Data submitted successfully:', data);
+      if (data.status === "success") {
+        document.getElementById("successMsg").style.display = "block"; // Show success message
+        document.getElementById("rsvpForm").reset(); // Reset the form
+      }
     })
     .catch(error => {
-      console.error('Error submitting the form:', error);
+      console.error('Error:', error);
     });
   });
-</script>
-    <section class="wishes">
+
+  // Email validation function
+
+</script>    <section class="wishes">
       <div class="section-title reveal">
         <p>Little notes of love</p>
         <h2>Guest Wishes</h2>
