@@ -370,66 +370,32 @@ if (enterBtn) {
     });
   });
 }
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('rsvpForm').addEventListener('submit', function (event) {
+    event.preventDefault();
 
-document.getElementById('rsvpForm').addEventListener('submit', function(event) {
-  event.preventDefault();  // Prevent the default form submission
-  logMessage("Form submission started.");
-
-  // Collect the form data
-  const formData = new FormData(this);
-
-  // Log the form data to inspect
-  logMessage("Collected Form Data:");
-  for (let [key, value] of formData.entries()) {
-    logMessage(`${key}: ${value}`);
-  }
-
-  // Validate email before submitting
+    const name = document.getElementById('name') ? document.getElementById('name').value : '';
+    const email = document.getElementById('email') ? document.getElementById('email').value : '';
+    const attendance = document.querySelector('select[name="entry.1700203004"]') ? document.querySelector('select[name="entry.1700203004"]').value : '';
+    const message = document.querySelector('textarea') ? document.querySelector('textarea').value : '';
 
 
 
-  // Send the data to Google Forms using fetch
-  fetch('https://docs.google.com/forms/d/e/1FAIpQLSeqA7Ew9ore8INriS5xiBEy7gkw9PSp6Q90dpdDFDFndXvLuw/formResponse', {
-    method: 'POST',
-    body: formData
-  })
-  .then(response => {
-    // Handle successful response
-    logMessage("Form submitted successfully.");
-    document.getElementById('successMsg').style.display = 'block';
-    document.getElementById('rsvpForm').reset();  // Reset the form
-  })
-  .catch(error => {
-    // Handle errors if any
-    logMessage("Error during form submission: " + error);
-    console.error('Error submitting form:', error);
+    fetch('https://script.google.com/macros/s/AKfycbxN6e8CcemortFP9ohHmlpCBZsNbxNotziMveYSbMTqEUuDJ-7gj2Ay6_8oZe43Dbdx/exec', {
+      method: 'POST',
+      body: new URLSearchParams({
+        name,
+        email,
+        attendance,
+        message,
+      }),
+    })
+      .then((response) => response.text())
+      .then((data) => {
+        alert('Your RSVP has been submitted');
+      })
+      .catch((error) => {
+        console.error('Error submitting form:', error);
+      });
   });
 });
-
-
-
-// Function to log messages to the console and the webpage
-function logMessage(message) {
-  console.log(message);
-
-  // Create a debug log section if not already present
-  let debugSection = document.getElementById('debugLogs');
-  if (!debugSection) {
-    debugSection = document.createElement('div');
-    debugSection.id = 'debugLogs';
-    debugSection.style.position = 'fixed';
-    debugSection.style.top = '20px';
-    debugSection.style.right = '20px';
-    debugSection.style.maxHeight = '300px';
-    debugSection.style.overflowY = 'auto';
-    debugSection.style.padding = '10px';
-    debugSection.style.backgroundColor = 'rgba(0,0,0,0.7)';
-    debugSection.style.color = 'white';
-    debugSection.style.fontSize = '14px';
-    document.body.appendChild(debugSection);
-  }
-
-  const logEntry = document.createElement('p');
-  logEntry.textContent = message;
-  debugSection.appendChild(logEntry);
-}
