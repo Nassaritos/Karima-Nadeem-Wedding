@@ -136,21 +136,14 @@ Maqam, Cairo
     <div class="dress-code-card">
       <img src="dress.jpeg" alt="Formal Dress Code" class="dress-code-img">
       <i class="fa fa-tuxedo"></i>
-      <h3>Formal</h3>
-      <p>Black tie or elegant cocktail dress.</p>
+      <h3>Black Tie Wedding</h3>
     </div>
     <div class="dress-code-card">
       <img src="dress1.jpeg" alt="Semi-Formal Dress Code" class="dress-code-img">
       <i class="fa fa-user-tie"></i>
-      <h3>Semi-Formal</h3>
-      <p>Smart attire, but not as formal as black tie.</p>
+      <h3>Summer Color Palette</h3>
     </div>
-    <div class="dress-code-card">
-      <img src="dress2.jpeg" alt="Casual Dress Code" class="dress-code-img">
-      <i class="fa fa-tshirt"></i>
-      <h3>Casual</h3>
-      <p>Comfortable and laid-back dress code.</p>
-    </div>
+
   </div>
 </section>
     <section class="story memories-story" id="story">
@@ -161,11 +154,8 @@ Maqam, Cairo
 
   <div class="memories-timeline">
 
-        <article class="memory-card reveal reverse">
-      <div class="memory-img">
-        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80" alt="Wedding memory">
-      </div>
-      <div class="memory-text">
+        <article class="memory-card reveal">
+<div class="memory-text">
         <span>04</span>
         <h3>Now, Forever Begins</h3>
         <p>
@@ -173,6 +163,10 @@ Maqam, Cairo
           who made our story even more beautiful.
         </p>
       </div>
+      <div class="memory-img">
+        <img src="kN.jpeg" alt="Wedding memory">
+      </div>
+      
     </article>
 
   </div>
@@ -180,27 +174,31 @@ Maqam, Cairo
 
    
 
-  
-    <section class="rsvp" id="rsvp">
-      <div class="rsvp-card reveal">
-        <div class="section-title">
-          <p>Will you celebrate with us?</p>
-          <h2>RSVP</h2>
-        </div>
-        <form id="rsvpForm">
-          <input type="text" placeholder="Your name" required>
-          <select required>
-            <option value="">Will you attend?</option>
-            <option>Yes, happily attending</option>
-            <option>Sorry, can’t attend</option>
-          </select>
-          <input type="number" min="1" max="5" placeholder="Number of guests">
-          <textarea placeholder="Leave a sweet message"></textarea>
-          <button type="submit" class="primary-btn">Send RSVP</button>
-        </form>
-        <p class="success-msg" id="successMsg">Your RSVP has been saved. Can’t wait to celebrate together ♡</p>
-      </div>
-    </section>
+<section class="rsvp" id="rsvp">
+  <div class="rsvp-card reveal">
+    <div class="section-title">
+      <p>Will you celebrate with us?</p>
+      <h2>RSVP</h2>
+    </div>
+    <form id="rsvpForm" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeqA7Ew9ore8INriS5xiBEy7gkw9PSp6Q90dpdDFDFndXvLuw/formResponse" method="POST">
+      <!-- Input Fields Matching Google Form Fields -->
+      <input type="text" placeholder="Your Name" name="entry.818902257" required>
+      
+      <input type="email" placeholder="Your Email" name="entry.32082605" required id="email">
+      
+      <select name="entry.1700203004" required>
+        <option value="">Will you attend?</option>
+        <option>Accepts with pleasure</option>
+        <option>Regretfully declines</option>
+      </select>
+
+      <textarea placeholder="Leave a sweet message" name="entry.1763547570"></textarea>
+      
+      <button type="submit" class="primary-btn">Send RSVP</button>
+    </form>
+    <p class="success-msg" id="successMsg" style="display:none;">Your RSVP has been saved. Can’t wait to celebrate together ♡</p>
+  </div>
+</section>
 
     <section class="wishes">
       <div class="section-title reveal">

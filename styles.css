@@ -1823,8 +1823,10 @@ top:500px !important;
 }
 
 .dress-code-icons {
+max-width:980px;
+margin:auto;
   display: grid;
-  grid-template-columns: repeat(3, minmax(250px, 1fr));
+  grid-template-columns: repeat(2, minmax(280px, 1fr)); /* Reduced 250px to 200px */
   gap: 30px;
   justify-items: center;
 }
@@ -1875,4 +1877,17 @@ top:500px !important;
   height: 200px;
 
 }
+}
+
+.error-msg {
+  color: red;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.success-msg {
+  display: none;
+  color: green;
+  font-weight: bold;
+  margin-top: 20px;
 }
