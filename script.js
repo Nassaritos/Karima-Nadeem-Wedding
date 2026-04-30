@@ -373,19 +373,20 @@ if (enterBtn) {
 
 document.getElementById('rsvpForm').addEventListener('submit', function(event) {
   event.preventDefault();  // Prevent the default form submission
+  logMessage("Form submission started.");
 
   // Collect the form data
   const formData = new FormData(this);
 
-  // Validate email before submitting
-  const email = document.getElementById('email').value;
-  if (!validateEmail(email)) {
-    document.getElementById('email-error').style.display = 'block';
-    return;  // Stop form submission if the email is invalid
+  // Log the form data to inspect
+  logMessage("Collected Form Data:");
+  for (let [key, value] of formData.entries()) {
+    logMessage(`${key}: ${value}`);
   }
 
-  // Hide any error messages
-  document.getElementById('email-error').style.display = 'none';
+  // Validate email before submitting
+
+
 
   // Send the data to Google Forms using fetch
   fetch('https://docs.google.com/forms/d/e/1FAIpQLSeqA7Ew9ore8INriS5xiBEy7gkw9PSp6Q90dpdDFDFndXvLuw/formResponse', {
@@ -394,17 +395,41 @@ document.getElementById('rsvpForm').addEventListener('submit', function(event) {
   })
   .then(response => {
     // Handle successful response
+    logMessage("Form submitted successfully.");
     document.getElementById('successMsg').style.display = 'block';
     document.getElementById('rsvpForm').reset();  // Reset the form
   })
   .catch(error => {
     // Handle errors if any
+    logMessage("Error during form submission: " + error);
     console.error('Error submitting form:', error);
   });
 });
 
-// Validate email function
-function validateEmail(email) {
-  const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  return regex.test(email);
+
+
+// Function to log messages to the console and the webpage
+function logMessage(message) {
+  console.log(message);
+
+  // Create a debug log section if not already present
+  let debugSection = document.getElementById('debugLogs');
+  if (!debugSection) {
+    debugSection = document.createElement('div');
+    debugSection.id = 'debugLogs';
+    debugSection.style.position = 'fixed';
+    debugSection.style.top = '20px';
+    debugSection.style.right = '20px';
+    debugSection.style.maxHeight = '300px';
+    debugSection.style.overflowY = 'auto';
+    debugSection.style.padding = '10px';
+    debugSection.style.backgroundColor = 'rgba(0,0,0,0.7)';
+    debugSection.style.color = 'white';
+    debugSection.style.fontSize = '14px';
+    document.body.appendChild(debugSection);
+  }
+
+  const logEntry = document.createElement('p');
+  logEntry.textContent = message;
+  debugSection.appendChild(logEntry);
 }
