@@ -22,7 +22,7 @@ if (envelope) {
 if (revealInvite) {
   revealInvite.addEventListener('click', (e) => {
     e.stopPropagation();
-    document.getElementById('details')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('ceremony')?.scrollIntoView({ behavior: 'smooth' });
   });
 }
 
