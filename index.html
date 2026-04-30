@@ -178,6 +178,9 @@ Maqam, Cairo
       <p>Will you celebrate with us?</p>
       <h2>RSVP</h2>
     </div>
+        <p class="rsvp-note" style="text-align: center; margin-bottom: 30px;">
+      A confirmation email will be sent for entry. Please RSVP by August 6.
+    </p>
     <form id="googleForm">
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
@@ -229,8 +232,12 @@ Maqam, Cairo
                 });
 
                 if (response.ok) {
-                    await response.text(); // Ensures response is processed before redirect
-                    window.location.href = "index.html";
+                    await response.text(); // Ensures response is processed before continuing
+                    submitButton.textContent = "Send RSVP";
+
+                    // Show the success message
+                    document.getElementById("successMsg").style.display = "block";
+
                     return; // Exit function after successful submission
                 }
             } catch (error) {
