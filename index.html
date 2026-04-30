@@ -178,65 +178,79 @@ Maqam, Cairo
       <p>Will you celebrate with us?</p>
       <h2>RSVP</h2>
     </div>
-    <form id="rsvpForm">
-      <input type="text" id="name" placeholder="Your Name" required>
-      <input type="email" id="email" placeholder="Your Email" required>
+    <form id="googleForm">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
       <div id="email-error" class="error-msg" style="display:none;">Please enter a valid email address.</div>
       
-      <select id="attendance" required>
+      <select name="attendance" required>
         <option value="">Will you attend?</option>
         <option value="Accepts with pleasure">Accepts with pleasure</option>
         <option value="Regretfully declines">Regretfully declines</option>
       </select>
 
-      <textarea id="message" placeholder="Leave a sweet message"></textarea>
+      <textarea name="message" placeholder="Leave a sweet message"></textarea>
       <button type="submit" class="primary-btn">Send RSVP</button>
     </form>
     <p class="success-msg" id="successMsg" style="display:none;">Your RSVP has been saved. Can’t wait to celebrate together ♡</p>
   </div>
 </section>
 
+
 <script>
-  document.getElementById("rsvpForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent default form submission
-
-    // Get form values
-    var name = document.getElementById("name").value;
-    var email = document.getElementById("email").value;
-    var attendance = document.getElementById("attendance").value;
-    var message = document.getElementById("message").value;
-
- 
-
-    // Prepare data to send to Google Apps Script
-    var formData = {
-      name: name,
-      email: email,
-      attendance: attendance,
-      message: message
-    };
-
-    // Send data to Google Apps Script via POST request
-    fetch('https://script.google.com/macros/s/AKfycby47I5EWIe2E45j99zn9SyCL4VR35PBZpkN_vazWX65yrAzsoeqN-a8TmJAWsz18aHo/exec', {
-      method: 'POST',
-      contentType: 'application/json',
-      body: JSON.stringify(formData)
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.status === "success") {
-        document.getElementById("successMsg").style.display = "block"; // Show success message
-        document.getElementById("rsvpForm").reset(); // Reset the form
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("googleForm");
+        form.addEventListener("submit", submitForm);
     });
-  });
 
-  // Email validation function
+    let isSubmitting = false; // Prevents multiple submissions
 
-</script>    <section class="wishes">
+    async function submitForm(event) {
+        event.preventDefault();
+
+        if (isSubmitting) return; // If already submitting, exit function
+        isSubmitting = true;
+
+        let form = event.target;
+        let submitButton = form.querySelector(".primary-btn");
+        let formData = new FormData(form);
+        let data = new URLSearchParams(formData);
+
+        submitButton.textContent = "Processing...";
+        submitButton.disabled = true;
+
+        let url = "https://script.google.com/macros/s/AKfycbwVZDsdiYy4-Io79iJTf9TShJvi5wXEtS8VgQkiuMrr0EfOwweWv-i77oYuSZlKTk_k/exec"; // Replace with your script URL
+
+        for (let attempt = 0; attempt < 3; attempt++) { // Retry up to 3 times
+            try {
+                let response = await fetch(url, {
+                    method: "POST",
+                    body: data
+                });
+
+                if (response.ok) {
+                    await response.text(); // Ensures response is processed before redirect
+                    window.location.href = "index.html";
+                    return; // Exit function after successful submission
+                }
+            } catch (error) {
+                console.error("Error:", error);
+            }
+
+            if (attempt === 2) {
+                alert("Submission failed. Please try again later.");
+            }
+        }
+
+        submitButton.textContent = "Send RSVP";
+        submitButton.disabled = false;
+        isSubmitting = false; // Reset submission state
+    }
+</script>
+
+
+
+<section class="wishes">
       <div class="section-title reveal">
         <p>Little notes of love</p>
         <h2>Guest Wishes</h2>
