@@ -118,12 +118,13 @@ h1, h2 { font-family: 'Playfair Display', serif; }
   display: inline-block;
   border: none;
   text-decoration: none;
-background: linear-gradient(135deg, #ff007f, #e600a8);  color: white;
+  background: linear-gradient(135deg, rgb(240 167 217), rgb(198 82 161));
   padding: 14px 28px;
   border-radius: 999px;
   cursor: pointer;
   box-shadow: 0 16px 35px rgba(159,89,100,.25);
   transition: transform .25s ease, box-shadow .25s ease;
+color:white
 }
 .primary-btn:hover, .letter button:hover, .detail-card a:hover { transform: translateY(-4px); box-shadow: 0 20px 45px rgba(159,89,100,.35); }
 
