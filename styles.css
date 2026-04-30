@@ -1799,3 +1799,11 @@ top:500px !important;
     justify-content: center;
   }
 }
+
+
+/* Style the image to behave like an icon */
+.icon img {
+  width: 50px;   /* Adjust size to your preference */
+  height: 50px;  /* Ensure it's proportional */
+  object-fit: contain;  /* Keeps the image's aspect ratio */
+}

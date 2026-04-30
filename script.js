@@ -364,7 +364,7 @@ if (introEnvelope && envelopeImg) {
 if (enterBtn) {
   enterBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-
+    document.getElementById('intro').style.display = 'none';	
     document.getElementById('home')?.scrollIntoView({
       behavior: 'smooth'
     });
