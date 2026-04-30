@@ -219,7 +219,7 @@ section { padding: 90px 22px; }
   max-width: 980px;
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 22px;
 }
 .detail-card { padding: 34px; text-align: center; }
@@ -388,7 +388,7 @@ textarea { min-height: 120px; resize: vertical; }
 
   /* DETAILS spacing */
   .details-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   /* GALLERY becomes cinematic */
