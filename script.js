@@ -371,3 +371,40 @@ if (enterBtn) {
   });
 }
 
+document.getElementById('rsvpForm').addEventListener('submit', function(event) {
+  event.preventDefault();  // Prevent the default form submission
+
+  // Collect the form data
+  const formData = new FormData(this);
+
+  // Validate email before submitting
+  const email = document.getElementById('email').value;
+  if (!validateEmail(email)) {
+    document.getElementById('email-error').style.display = 'block';
+    return;  // Stop form submission if the email is invalid
+  }
+
+  // Hide any error messages
+  document.getElementById('email-error').style.display = 'none';
+
+  // Send the data to Google Forms using fetch
+  fetch('https://docs.google.com/forms/d/e/1FAIpQLSeqA7Ew9ore8INriS5xiBEy7gkw9PSp6Q90dpdDFDFndXvLuw/formResponse', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => {
+    // Handle successful response
+    document.getElementById('successMsg').style.display = 'block';
+    document.getElementById('rsvpForm').reset();  // Reset the form
+  })
+  .catch(error => {
+    // Handle errors if any
+    console.error('Error submitting form:', error);
+  });
+});
+
+// Validate email function
+function validateEmail(email) {
+  const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return regex.test(email);
+}

@@ -173,19 +173,17 @@ Maqam, Cairo
 </section>
 
    
-
 <section class="rsvp" id="rsvp">
   <div class="rsvp-card reveal">
     <div class="section-title">
       <p>Will you celebrate with us?</p>
       <h2>RSVP</h2>
     </div>
-    <form id="rsvpForm" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeqA7Ew9ore8INriS5xiBEy7gkw9PSp6Q90dpdDFDFndXvLuw/formResponse" method="POST">
-      <!-- Input Fields Matching Google Form Fields -->
+    <form id="rsvpForm">
       <input type="text" placeholder="Your Name" name="entry.818902257" required>
-      
       <input type="email" placeholder="Your Email" name="entry.32082605" required id="email">
-      
+      <div id="email-error" class="error-msg" style="display:none;">Please enter a valid email address.</div>
+
       <select name="entry.1700203004" required>
         <option value="">Will you attend?</option>
         <option>Accepts with pleasure</option>
@@ -193,13 +191,11 @@ Maqam, Cairo
       </select>
 
       <textarea placeholder="Leave a sweet message" name="entry.1763547570"></textarea>
-      
       <button type="submit" class="primary-btn">Send RSVP</button>
     </form>
-    <p class="success-msg" id="successMsg" style="display:none;">Your RSVP has been saved. Can’t wait to celebrate together ♡</p>
+    <p class="success-msg" id="successMsg">Your RSVP has been saved. Can’t wait to celebrate together ♡</p>
   </div>
 </section>
-
     <section class="wishes">
       <div class="section-title reveal">
         <p>Little notes of love</p>
