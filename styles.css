@@ -1808,3 +1808,71 @@ top:500px !important;
   height: 50px;  /* Ensure it's proportional */
   object-fit: contain;  /* Keeps the image's aspect ratio */
 }
+
+/* ===== DRESS CODE SECTION ===== */
+.dress-code {
+  padding: 60px 20px;
+  text-align: center;
+  background: var(--cream);
+}
+
+.dress-code .section-title {
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: var(--rose-dark);
+}
+
+.dress-code-icons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(250px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+.dress-code-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+  width: 100%;
+}
+
+.dress-code-card:hover {
+  transform: translateY(-5px);
+}
+
+.dress-code-img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.dress-code-card i {
+  font-size: 40px;
+  color: var(--rose-dark);
+  margin-bottom: 15px;
+}
+
+.dress-code-card h3 {
+  font-size: 22px;
+  color: var(--rose-dark);
+  margin-bottom: 10px;
+}
+
+.dress-code-card p {
+  font-size: 16px;
+  color: var(--muted);
+}
+
+@media (max-width: 600px) {
+  .dress-code-icons {
+    grid-template-columns: 1fr;
+  }
+.dress-code-img {
+  height: 200px;
+
+}
+}
