@@ -172,7 +172,6 @@ Maqam, Cairo
   </div>
 </section>
 
-   
 <section class="rsvp" id="rsvp">
   <div class="rsvp-card reveal">
     <div class="section-title">
@@ -180,22 +179,55 @@ Maqam, Cairo
       <h2>RSVP</h2>
     </div>
     <form id="rsvpForm">
-      <input type="text" placeholder="Your Name" name="entry.818902257" required id="name">
-      <input type="email" placeholder="Your Email" name="entry.32082605" required id="email">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
       <div id="email-error" class="error-msg" style="display:none;">Please enter a valid email address.</div>
-
-      <select name="entry.1700203004" required>
+      
+      <select id="attendance" required>
         <option value="">Will you attend?</option>
-        <option>Accepts with pleasure</option>
-        <option>Regretfully declines</option>
+        <option value="Accepts with pleasure">Accepts with pleasure</option>
+        <option value="Regretfully declines">Regretfully declines</option>
       </select>
 
-      <textarea placeholder="Leave a sweet message" name="entry.1763547570"></textarea>
+      <textarea id="message" placeholder="Leave a sweet message"></textarea>
       <button type="submit" class="primary-btn">Send RSVP</button>
     </form>
-    <p class="success-msg" id="successMsg">Your RSVP has been saved. Can’t wait to celebrate together ♡</p>
+    <p class="success-msg" id="successMsg" style="display:none;">Your RSVP has been saved. Can’t wait to celebrate together ♡</p>
   </div>
 </section>
+
+<script>
+  document.getElementById('rsvpForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const attendance = document.getElementById('attendance').value;
+    const message = document.getElementById('message').value;
+
+    // Replace with your actual Google Apps Script Web App URL
+    const webAppUrl = 'https://script.google.com/macros/s/AKfycby47I5EWIe2E45j99zn9SyCL4VR35PBZpkN_vazWX65yrAzsoeqN-a8TmJAWsz18aHo/exec'; // Update with your Web App URL from Google Apps Script
+
+    fetch(webAppUrl, {
+      method: 'POST',
+      body: new URLSearchParams({
+        'name': name, 
+        'email': email, 
+        'attendance': attendance,
+        'message': message
+      }),
+    })
+    .then(response => response.text())
+    .then(data => {
+      // Show success message after successful submission
+      document.getElementById('successMsg').style.display = 'block';
+      console.log('Data submitted successfully:', data);
+    })
+    .catch(error => {
+      console.error('Error submitting the form:', error);
+    });
+  });
+</script>
     <section class="wishes">
       <div class="section-title reveal">
         <p>Little notes of love</p>

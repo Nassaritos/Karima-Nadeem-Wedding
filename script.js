@@ -370,32 +370,3 @@ if (enterBtn) {
     });
   });
 }
-document.addEventListener('DOMContentLoaded', function () {
-  document.getElementById('rsvpForm').addEventListener('submit', function (event) {
-    event.preventDefault();
-
-    const name = document.getElementById('name') ? document.getElementById('name').value : '';
-    const email = document.getElementById('email') ? document.getElementById('email').value : '';
-    const attendance = document.querySelector('select[name="entry.1700203004"]') ? document.querySelector('select[name="entry.1700203004"]').value : '';
-    const message = document.querySelector('textarea') ? document.querySelector('textarea').value : '';
-
-
-
-    fetch('https://script.google.com/macros/s/AKfycbxN6e8CcemortFP9ohHmlpCBZsNbxNotziMveYSbMTqEUuDJ-7gj2Ay6_8oZe43Dbdx/exec', {
-      method: 'POST',
-      body: new URLSearchParams({
-        name,
-        email,
-        attendance,
-        message,
-      }),
-    })
-      .then((response) => response.text())
-      .then((data) => {
-        alert('Your RSVP has been submitted');
-      })
-      .catch((error) => {
-        console.error('Error submitting form:', error);
-      });
-  });
-});
