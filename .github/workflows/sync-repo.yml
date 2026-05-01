@@ -3,7 +3,7 @@ name: Sync Repo 1 to Repo 2
 on:
   push:
     branches:
-      - main  # Trigger on push to the main branch of Repo 1
+      - main  # Trigger the action on a push to the main branch of Repo 1
 
 jobs:
   sync:
@@ -31,12 +31,9 @@ jobs:
           cd repo2
           git add .
           git commit -m "Sync update from Repo 1"
-          git push origin main
 
-      # Step 5 — Push changes to Repo 2
+      # Step 5 — Push changes to Repo 2 using GITHUB_TOKEN
       - name: Push changes to Repo 2
         run: |
           cd repo2
-          git push https://github.com/Nassaritos/karima_nadeem_wedding.git
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for authentication
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/Nassaritos/karima_nadeem_wedding.git
