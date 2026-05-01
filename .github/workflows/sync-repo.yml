@@ -1,0 +1,42 @@
+name: Sync Repo 1 to Repo 2
+
+on:
+  push:
+    branches:
+      - main  # Trigger the action on a push to the main branch of Repo 1
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the latest code from Repo 1
+      - name: Checkout Repo 1
+        uses: actions/checkout@v2
+        
+      # Step 2: Set up Git configuration with user details
+      - name: Set up Git
+        run: |
+          git config --global user.name 'Nassaritos'
+          git config --global user.email 'ibraheem.a.nassar@gmail.com'
+
+      # Step 3: Clone Repo 2 (destination repo - karima_nadeem_wedding)
+      - name: Clone Repo 2
+        run: git clone https://github.com/Nassaritos/karima_nadeem_wedding.git
+      
+      # Step 4: Copy changes from Repo 1 to Repo 2
+      - name: Copy changes to Repo 2
+        run: |
+          cp -r ./ ./karima_nadeem_wedding/
+          cd karima_nadeem_wedding
+          git add .
+          git commit -m "Sync changes from Repo 1"
+          git push https://github.com/Nassaritos/karima_nadeem_wedding.git
+
+      # Step 5: Push changes to Repo 2
+      - name: Push changes to Repo 2
+        run: |
+          cd karima_nadeem_wedding
+          git push https://github.com/Nassaritos/karima_nadeem_wedding.git
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for authentication
