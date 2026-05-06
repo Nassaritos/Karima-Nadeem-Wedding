@@ -201,53 +201,63 @@ Maqam, Cairo
 
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const form = document.getElementById("googleForm");
-        form.addEventListener("submit", submitForm);
-    });
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("googleForm");
+  if (!form) return;
 
-    let isSubmitting = false; // Prevents multiple submissions
+  form.addEventListener("submit", submitForm);
+});
 
-    async function submitForm(event) {
-        event.preventDefault();
+let isSubmitting = false;
 
-        if (isSubmitting) return; // If already submitting, exit function
-        isSubmitting = true;
+async function submitForm(event) {
+  event.preventDefault();
 
-        let form = event.target;
-        let submitButton = form.querySelector(".primary-btn");
-        let formData = new FormData(form);
-        let data = new URLSearchParams(formData);
+  if (isSubmitting) return;
+  isSubmitting = true;
 
-        submitButton.textContent = "Processing...";
-        submitButton.disabled = true;
+  const form = event.target;
+  const submitButton = form.querySelector(".primary-btn");
+  const successMsg = document.getElementById("successMsg");
 
-        let url = "https://script.google.com/macros/s/AKfycbymnZED8lqHkIU2zbTTXY-kvp_RHK5bkZ5o_MbDmlOUgLoW9IGa-VpZmHw-4XRrbnYb/exec"; // Replace with your script URL
+  const formData = new FormData(form);
+  const data = new URLSearchParams(formData);
 
-            try {
-                let response = await fetch(url, {
-                    method: "POST",
-                    body: data
-                });
+  submitButton.textContent = "Processing...";
+  submitButton.disabled = true;
 
-                if (response.ok) {
-                    await response.text(); // Ensures response is processed before continuing
-                    submitButton.textContent = "Send RSVP";
+  const url = "https://script.google.com/macros/s/AKfycbymnZED8lqHkIU2zbTTXY-kvp_RHK5bkZ5o_MbDmlOUgLoW9IGa-VpZmHw-4XRrbnYb/exec";
 
-                    // Show the success message
-                    document.getElementById("successMsg").style.display = "block";
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        body: data
+      });
 
-                    return; // Exit function after successful submission
-                }
-            }
+      if (response.ok) {
+        await response.text();
 
-           
-        }
+        successMsg.style.display = "block";
+        form.reset();
 
         submitButton.textContent = "Send RSVP";
         submitButton.disabled = false;
-        isSubmitting = false; // Reset submission state
+        isSubmitting = false;
+
+        return;
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
     }
+  }
+
+  alert("Submission failed. Please try again later.");
+
+  submitButton.textContent = "Send RSVP";
+  submitButton.disabled = false;
+  isSubmitting = false;
+}
 </script>
 
 
