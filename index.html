@@ -222,9 +222,8 @@ Maqam, Cairo
         submitButton.textContent = "Processing...";
         submitButton.disabled = true;
 
-        let url = "https://script.google.com/macros/s/AKfycbyE_Zgddmah7iiblmUwEvFvmBHSktFhDbyAkAOKs5urRopzc8bjKZbv4klX_EAtRaKb/exec"; // Replace with your script URL
+        let url = "https://script.google.com/macros/s/AKfycbymnZED8lqHkIU2zbTTXY-kvp_RHK5bkZ5o_MbDmlOUgLoW9IGa-VpZmHw-4XRrbnYb/exec"; // Replace with your script URL
 
-        for (let attempt = 0; attempt < 3; attempt++) { // Retry up to 3 times
             try {
                 let response = await fetch(url, {
                     method: "POST",
@@ -240,13 +239,9 @@ Maqam, Cairo
 
                     return; // Exit function after successful submission
                 }
-            } catch (error) {
-                console.error("Error:", error);
             }
 
-            if (attempt === 2) {
-                alert("Submission failed. Please try again later.");
-            }
+           
         }
 
         submitButton.textContent = "Send RSVP";
