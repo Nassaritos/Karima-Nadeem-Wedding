@@ -364,7 +364,11 @@ if (introEnvelope && envelopeImg) {
 if (enterBtn) {
   enterBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    document.getElementById('intro').style.display = 'none';	
+    const intro = document.getElementById('intro');
+    if (intro) {
+      intro.classList.add('exit');
+      setTimeout(() => { intro.style.display = 'none'; }, 600);
+    }
     document.getElementById('home')?.scrollIntoView({
       behavior: 'smooth'
     });
