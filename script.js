@@ -365,12 +365,17 @@ if (enterBtn) {
   enterBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     const intro = document.getElementById('intro');
+
+    // Reveal the rest of the page
+    document.body.classList.remove('intro-lock');
+    document.body.classList.add('intro-done');
+
+    // Fade out and remove the envelope section
     if (intro) {
       intro.classList.add('exit');
       setTimeout(() => { intro.style.display = 'none'; }, 600);
     }
-    document.getElementById('home')?.scrollIntoView({
-      behavior: 'smooth'
-    });
+
+    window.scrollTo({ top: 0, behavior: 'auto' });
   });
 }
