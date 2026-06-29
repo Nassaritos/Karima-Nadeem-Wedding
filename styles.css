@@ -1790,7 +1790,7 @@ font-weight:100
   }
 
   .hero.video-hero .nav {
-    width: calc(70% - 32px) !important;
+    width: calc(90% - 32px) !important;
     overflow-x: auto !important;
     justify-content: center !important;
 top:500px !important;
